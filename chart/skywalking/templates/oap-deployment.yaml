@@ -92,6 +92,9 @@ spec:
             port: 12800
           initialDelaySeconds: 15
           periodSeconds: 20
+        volumeMounts:
+          - name: oap-config-path
+            mountPath: /skywalking/ext-config/
         ports:
         - containerPort: 11800
           name: grpc
@@ -140,3 +143,7 @@ spec:
         - name: {{ $key }}
           value: {{ $value | quote }}
         {{- end }}
+      volumes:
+        - name: oap-config-path
+          configMap:
+            name: oap-config
