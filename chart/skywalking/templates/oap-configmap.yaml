@@ -18,4 +18,4 @@ kind: ConfigMap
 metadata:
   name: oap-config
 data:
-  {{ (.Files.Glob "oap-config/*").AsConfig | indent 2 }}
+  {{- (.Files.Glob "oap-config/*").AsConfig | nindent 2 }}
